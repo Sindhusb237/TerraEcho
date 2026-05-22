@@ -1,0 +1,462 @@
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-light: #ffffff;
+  --bg-soft: #f9fafb;
+  --panel: #ffffff;
+  --panel-strong: #f3f4f6;
+  --border-soft: rgba(46, 125, 50, 0.12);
+  --text-dark: #111827;
+  --text-muted: #4b5563;
+  --primary: #2e7d32;
+  --secondary: #1b5e20;
+  --accent: #4caf50;
+  --shadow: rgba(0, 0, 0, 0.04);
+}
+
+body, .stApp, .main {
+  background-color: var(--bg-light);
+  background-image:
+    radial-gradient(circle at top left, rgba(46, 125, 50, 0.04), transparent 25%),
+    radial-gradient(circle at 75% 20%, rgba(46, 125, 50, 0.03), transparent 20%),
+    linear-gradient(180deg, #ffffff 0%, #fcfdfd 100%);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+}
+
+.stApp {
+  padding: 0 !important;
+}
+ 
+.app-header {
+  border-radius: 32px;
+  background: #ffffff;
+  border: 1px solid rgba(46, 125, 50, 0.08);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+}
+
+.app-header .logo-badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  background: linear-gradient(135deg, #2e7d32, #4caf50);
+  color: #ffffff;
+  box-shadow: 0 16px 30px rgba(46, 125, 50, 0.18);
+}
+
+.pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(46, 125, 50, 0.12);
+  color: #1b5e20;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.pulse-badge::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2e7d32;
+  box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4);
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.85); opacity: 0.8; box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4); }
+  70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
+  100% { transform: scale(0.85); opacity: 0.8; box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+}
+
+.upload-card {
+  border-radius: 32px;
+  background: #ffffff;
+  border: 1px solid rgba(46, 125, 50, 0.08);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.06);
+  padding: 32px;
+}
+
+.upload-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.upload-caption {
+  color: #4b5563;
+  line-height: 1.75;
+}
+
+.upload-highlight {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.upload-instructions {
+  color: #6b7280;
+}
+
+.upload-drop {
+  border-radius: 24px;
+  border: 2px dashed rgba(46, 125, 50, 0.2);
+  background: rgba(46, 125, 50, 0.04);
+  padding: 44px 28px;
+  transition: all 0.3s ease;
+}
+
+.upload-drop:hover {
+  transform: translateY(-2px);
+  border-color: rgba(46, 125, 50, 0.5);
+  background: rgba(46, 125, 50, 0.08);
+}
+
+.dashboard-card {
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.06);
+  padding: 26px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.09);
+}
+
+.status-card {
+  border-radius: 28px;
+  padding: 24px;
+  color: #111827;
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.status-card.dry {
+  background: #fffbf0;
+  border-color: rgba(217, 119, 6, 0.14);
+}
+
+.status-card.moist {
+  background: #eff6ff;
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.status-card.compact {
+  background: #fff7ed;
+  border-color: rgba(249, 115, 22, 0.16);
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.status-tag.dry { background: rgba(217, 119, 6, 0.12); color: #b45309; }
+.status-tag.moist { background: rgba(59, 130, 246, 0.16); color: #1d4ed8; }
+.status-tag.compact { background: rgba(249, 115, 22, 0.14); color: #c2410c; }
+
+.weather-card {
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.08), rgba(16, 185, 129, 0.08));
+  border: 1px solid rgba(46, 125, 50, 0.14);
+  padding: 28px;
+}
+
+.weather-card h4 {
+  margin-bottom: 12px;
+  color: #065f46;
+}
+
+.weather-info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.weather-pill {
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 14px 16px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: #111827;
+}
+
+.recent-history-card {
+  border-radius: 26px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.05);
+  padding: 22px;
+}
+
+/* Sidebar Custom Styling */
+[data-testid="stSidebar"] {
+  background-color: #111827 !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-testid="stSidebar"] * {
+  color: #f3f4f6 !important;
+}
+
+[data-testid="stSidebar"] hr {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Make Streamlit Radio inside Sidebar look like beautiful navigation buttons */
+[data-testid="stSidebar"] div[data-testid="stRadio"] > label {
+  display: none !important; /* Hide "Navigate" text */
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[role="radiogroup"] {
+  gap: 8px !important;
+  padding: 8px 4px !important;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[role="radiogroup"] > label {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  color: #d1d5db !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 0px !important;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[role="radiogroup"] > label:hover {
+  background-color: rgba(46, 125, 50, 0.15) !important;
+  border-color: rgba(46, 125, 50, 0.4) !important;
+  color: #ffffff !important;
+  transform: translateX(4px);
+}
+
+/* Checked option state */
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[role="radiogroup"] > label[data-checked="true"],
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[role="radiogroup"] > label:focus-within {
+  background-color: #2e7d32 !important;
+  border-color: #2e7d32 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25) !important;
+}
+
+/* Hide Streamlit default radio selection circles */
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[role="radiogroup"] label span[data-testid="stWidgetLabel"] {
+  display: none !important;
+}
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[role="radiogroup"] label div[data-testid="stMarkdownContainer"] {
+  width: 100% !important;
+}
+
+/* File Uploader Custom UI styling */
+div[data-testid="stFileUploader"] {
+  background-color: #ffffff !important;
+  border: 2px dashed rgba(46, 125, 50, 0.2) !important;
+  border-radius: 20px !important;
+  padding: 28px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+  margin: 16px 24px !important;
+}
+
+div[data-testid="stFileUploader"]:hover {
+  border-color: #2e7d32 !important;
+  box-shadow: 0 12px 30px rgba(46, 125, 50, 0.05) !important;
+  transform: translateY(-2px);
+}
+
+div[data-testid="stFileUploader"] section {
+  background: transparent !important;
+}
+
+/* Style the file uploader browse files button */
+div[data-testid="stFileUploader"] button {
+  background-color: #2e7d32 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 10px 28px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.18) !important;
+  transition: all 0.2s ease !important;
+}
+
+div[data-testid="stFileUploader"] button:hover {
+  background-color: #1b5e20 !important;
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.28) !important;
+}
+
+/* Animated progress bar */
+div[data-testid="stProgress"] > div > div > div > div {
+  background: linear-gradient(90deg, #2e7d32, #4caf50, #81c784, #2e7d32) !important;
+  background-size: 200% auto !important;
+  animation: progressShift 1.8s linear infinite !important;
+}
+
+@keyframes progressShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Dashboard Analytics Cards */
+.analytics-card,
+.glass-card,
+.mini-panel,
+.result-card,
+.detail-card,
+.report-card,
+.history-card,
+.insight-card,
+.feature-card,
+.about-card {
+  border-radius: 20px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover, .insight-card:hover, .about-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(46, 125, 50, 0.30);
+  box-shadow: 0 20px 40px rgba(46, 125, 50, 0.06);
+}
+
+.hero-panel {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  padding: 40px;
+  margin: 24px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 50px rgba(46, 125, 50, 0.15);
+}
+
+.hero-panel h1 {
+  color: #ffffff !important;
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1b5e20 !important;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+.hero-button.ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-waveform {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.wave-bars span {
+  background: linear-gradient(180deg, #81c784 0%, #ffffff 100%);
+}
+
+.stat-card {
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+  color: #ffffff !important;
+}
+
+.page-heading, .section-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 36px 24px 18px;
+  color: #111827;
+}
+
+/* Custom buttons styling in Streamlit main panel */
+div.stButton > button {
+  background-color: #2e7d32 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  border: none !important;
+  padding: 10px 24px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+div.stButton > button:hover {
+  background-color: #1b5e20 !important;
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.25) !important;
+  transform: translateY(-1px);
+}
+
+div.stButton > button:active {
+  transform: scale(0.98);
+}
+
+/* Download button primary alignment */
+div.stDownloadButton > button {
+  background-color: #2e7d32 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  border: none !important;
+  padding: 12px 28px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15) !important;
+  transition: all 0.2s ease-in-out !important;
+  width: 100% !important;
+}
+
+div.stDownloadButton > button:hover {
+  background-color: #1b5e20 !important;
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.25) !important;
+}
+
+/* Footer layout */
+.footer-grid div {
+  background: #f9fafb;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 1024px) {
+  .hero-panel { grid-template-columns: 1fr; }
+}
