@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.env
+.venv
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Database (local only)
+terraecho.db
+
+# Generated reports (not needed in repo)
+reports/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temp scripts
+fix_top.py
+update_analysis.py
+update_app.py
+update_i18n.py
+update_other_pages.py
+update_ui.py
+translation_test.py
+
+# Compiled binaries
+*.exe
